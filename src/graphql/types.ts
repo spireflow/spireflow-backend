@@ -131,6 +131,19 @@ export const WeeklyActivityType = new GraphQLObjectType({
   }),
 });
 
+// Notification Type
+export const NotificationType = new GraphQLObjectType({
+  name: "Notification",
+  fields: () => ({
+    id: { type: GraphQLString },
+    title: { type: GraphQLString },
+    description: { type: GraphQLString },
+    time: { type: GraphQLString },
+    icon: { type: GraphQLString },
+    isNew: { type: GraphQLBoolean },
+  }),
+});
+
 // MonthPerformance Type
 export const MonthPerformanceType = new GraphQLObjectType({
   name: "MonthPerformance",

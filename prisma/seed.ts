@@ -21,6 +21,7 @@ import { marketMetricsData } from "../src/data/analytics/marketMetrics";
 import { revenueDistributionData } from "../src/data/analytics/revenueDistribution";
 import { weeklyPerformanceData } from "../src/data/homepage/weeklyPerformance";
 import { weeklyActivitiesData } from "../src/data/homepage/weeklyActivities";
+import { notificationsData } from "../src/data/notifications";
 
 const prisma = new PrismaClient();
 
@@ -48,6 +49,7 @@ async function main() {
   await prisma.revenueDistribution.deleteMany();
   await prisma.weeklyPerformance.deleteMany();
   await prisma.weeklyActivity.deleteMany();
+  await prisma.notification.deleteMany();
 
   // Seed for Assets
   for (const item of assetPerformanceData) {
@@ -152,6 +154,11 @@ async function main() {
   // Seed for Weekly Activities
   for (const item of weeklyActivitiesData) {
     await prisma.weeklyActivity.create({ data: item });
+  }
+
+  // Seed for Notifications
+  for (const item of notificationsData) {
+    await prisma.notification.create({ data: item });
   }
 }
 

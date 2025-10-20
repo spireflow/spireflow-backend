@@ -230,3 +230,14 @@ model WeeklyActivity {
 
   @@map("weekly_activities")
 }
+
+model Notification {
+  id          String  @id @default(uuid())
+  title       String
+  description String
+  time        String
+  icon        String
+  isNew       Boolean
+
+  @@map("notifications")
+}

@@ -14,6 +14,7 @@ import {
   OldHomepageType,
   MarketMetricsType,
   MonthPerformanceType,
+  NotificationType,
   OrderType,
   ProductType,
   RegionType,
@@ -158,6 +159,12 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(WeeklyActivityType),
       resolve() {
         return prisma.weeklyActivity.findMany();
+      },
+    },
+    notifications: {
+      type: new GraphQLList(NotificationType),
+      resolve() {
+        return prisma.notification.findMany();
       },
     },
     analytics: {
