@@ -89,6 +89,48 @@ export const HomeSmallCardType = new GraphQLObjectType({
   }),
 });
 
+// OldHomeSmallCard Type (same structure as HomeSmallCard but separate type)
+export const OldHomeSmallCardType = new GraphQLObjectType({
+  name: "OldHomeSmallCard",
+  fields: () => ({
+    id: { type: GraphQLString },
+    title: { type: GraphQLString },
+    metric: { type: GraphQLString },
+    metricPrev: { type: GraphQLString },
+    delta: { type: GraphQLString },
+    deltaType: { type: GraphQLString },
+    color: { type: GraphQLString },
+    increased: { type: GraphQLBoolean },
+    changeValue: { type: GraphQLFloat },
+    changeText: { type: GraphQLString },
+    chartData: { type: GraphQLJSON },
+  }),
+});
+
+// WeeklyPerformance Type
+export const WeeklyPerformanceType = new GraphQLObjectType({
+  name: "WeeklyPerformance",
+  fields: () => ({
+    id: { type: GraphQLString },
+    name: { type: GraphQLString },
+    revenue: { type: GraphQLFloat },
+    profit: { type: GraphQLFloat },
+  }),
+});
+
+// WeeklyActivity Type
+export const WeeklyActivityType = new GraphQLObjectType({
+  name: "WeeklyActivity",
+  fields: () => ({
+    id: { type: GraphQLInt },
+    user: { type: GraphQLString },
+    action: { type: GraphQLString },
+    time: { type: GraphQLString },
+    icon: { type: GraphQLString },
+    color: { type: GraphQLString },
+  }),
+});
+
 // MonthPerformance Type
 export const MonthPerformanceType = new GraphQLObjectType({
   name: "MonthPerformance",
@@ -197,22 +239,6 @@ export const TotalProfitProductsType = new GraphQLObjectType({
   }),
 });
 
-// Trader Type
-export const TraderType = new GraphQLObjectType({
-  name: "Trader",
-  fields: () => ({
-    id: { type: GraphQLString },
-    name: { type: GraphQLString },
-    leads: { type: GraphQLInt },
-    sales: { type: GraphQLString },
-    quota: { type: GraphQLString },
-    variance: { type: GraphQLString },
-    region: { type: GraphQLString },
-    status: { type: GraphQLString },
-    deltaType: { type: GraphQLString },
-  }),
-});
-
 // YearOverview Type
 export const YearOverviewType = new GraphQLObjectType({
   name: "YearOverview",
@@ -268,9 +294,21 @@ export const HomepageType = new GraphQLObjectType({
     bestSellingProducts: { type: new GraphQLList(BestSellingProductType) },
     customerSatisfaction: { type: new GraphQLList(CustomerSatisfactionType) },
     homeSmallCards: { type: new GraphQLList(HomeSmallCardType) },
+    revenueOverTime: { type: new GraphQLList(RevenueOverTimeType) },
+    revenuePerCountry: { type: new GraphQLList(RevenuePerCountryType) },
+    weeklyPerformance: { type: new GraphQLList(WeeklyPerformanceType) },
+    weeklyActivities: { type: new GraphQLList(WeeklyActivityType) },
+  }),
+});
+
+export const OldHomepageType = new GraphQLObjectType({
+  name: "OldHomepage",
+  fields: () => ({
+    bestSellingProducts: { type: new GraphQLList(BestSellingProductType) },
+    customerSatisfaction: { type: new GraphQLList(CustomerSatisfactionType) },
+    homeSmallCards: { type: new GraphQLList(OldHomeSmallCardType) },
     regions: { type: new GraphQLList(RegionType) },
     revenueOverTime: { type: new GraphQLList(RevenueOverTimeType) },
-    tradersTable: { type: new GraphQLList(TraderType) },
     revenuePerCountry: { type: new GraphQLList(RevenuePerCountryType) },
   }),
 });

@@ -9,7 +9,9 @@ import {
   CustomerType,
   EventType,
   HomeSmallCardType,
+  OldHomeSmallCardType,
   HomepageType,
+  OldHomepageType,
   MarketMetricsType,
   MonthPerformanceType,
   OrderType,
@@ -21,8 +23,9 @@ import {
   TodaySalesType,
   TotalProfitMonthType,
   TotalProfitProductsType,
-  TraderType,
   YearOverviewType,
+  WeeklyPerformanceType,
+  WeeklyActivityType,
 } from "./types";
 
 const prisma = new PrismaClient();
@@ -64,6 +67,12 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(HomeSmallCardType),
       resolve() {
         return prisma.homeSmallCard.findMany();
+      },
+    },
+    oldHomeSmallCards: {
+      type: new GraphQLList(OldHomeSmallCardType),
+      resolve() {
+        return prisma.oldHomeSmallCard.findMany();
       },
     },
     monthPerformance: {
@@ -120,12 +129,7 @@ const RootQuery = new GraphQLObjectType({
         return prisma.totalProfitProduct.findMany();
       },
     },
-    traders: {
-      type: new GraphQLList(TraderType),
-      resolve() {
-        return prisma.trader.findMany();
-      },
-    },
+
     yearOverview: {
       type: new GraphQLList(YearOverviewType),
       resolve() {
@@ -142,6 +146,18 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(RevenueDistributionType),
       resolve() {
         return prisma.revenueDistribution.findMany();
+      },
+    },
+    weeklyPerformance: {
+      type: new GraphQLList(WeeklyPerformanceType),
+      resolve() {
+        return prisma.weeklyPerformance.findMany();
+      },
+    },
+    weeklyActivities: {
+      type: new GraphQLList(WeeklyActivityType),
+      resolve() {
+        return prisma.weeklyActivity.findMany();
       },
     },
     analytics: {
@@ -186,9 +202,40 @@ const RootQuery = new GraphQLObjectType({
           prisma.bestSellingProduct.findMany(),
           prisma.customerSatisfaction.findMany(),
           prisma.homeSmallCard.findMany(),
+          prisma.revenueOverTime.findMany(),
+          prisma.revenuePerCountry.findMany(),
+          prisma.weeklyPerformance.findMany(),
+          prisma.weeklyActivity.findMany(),
+        ]).then(
+          ([
+            bestSellingProducts,
+            customerSatisfaction,
+            homeSmallCards,
+            revenueOverTime,
+            revenuePerCountry,
+            weeklyPerformance,
+            weeklyActivities,
+          ]) => ({
+            bestSellingProducts,
+            customerSatisfaction,
+            homeSmallCards,
+            revenueOverTime,
+            revenuePerCountry,
+            weeklyPerformance,
+            weeklyActivities,
+          })
+        );
+      },
+    },
+    oldHomepage: {
+      type: OldHomepageType,
+      resolve() {
+        return Promise.all([
+          prisma.bestSellingProduct.findMany(),
+          prisma.customerSatisfaction.findMany(),
+          prisma.oldHomeSmallCard.findMany(),
           prisma.region.findMany(),
           prisma.revenueOverTime.findMany(),
-          prisma.trader.findMany(),
           prisma.revenuePerCountry.findMany(),
         ]).then(
           ([
@@ -197,7 +244,6 @@ const RootQuery = new GraphQLObjectType({
             homeSmallCards,
             regions,
             revenueOverTime,
-            tradersTable,
             revenuePerCountry,
           ]) => ({
             bestSellingProducts,
@@ -205,7 +251,6 @@ const RootQuery = new GraphQLObjectType({
             homeSmallCards,
             regions,
             revenueOverTime,
-            tradersTable,
             revenuePerCountry,
           })
         );

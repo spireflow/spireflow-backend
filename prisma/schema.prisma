@@ -76,6 +76,22 @@ model HomeSmallCard {
   @@map("home_small_cards")
 }
 
+model OldHomeSmallCard {
+  id          String  @id @default(uuid())
+  title       String
+  metric      String
+  metricPrev  String
+  delta       String
+  deltaType   String
+  color       String
+  increased   Boolean
+  changeValue Float
+  changeText  String
+  chartData   Json
+
+  @@map("old_home_small_cards")
+}
+
 model MonthPerformance {
   id     String @id @default(uuid())
   month  String
@@ -166,20 +182,6 @@ model TotalProfitProduct {
   @@map("total_profit_products")
 }
 
-model Trader {
-  id        String @id @default(uuid())
-  name      String
-  leads     Int
-  sales     String
-  quota     String
-  variance  String
-  region    String
-  status    String
-  deltaType String
-
-  @@map("traders")
-}
-
 model YearOverview {
   id      String @id @default(uuid())
   name    String
@@ -207,4 +209,24 @@ model RevenueDistribution {
   online   Int
 
   @@map("revenue_distribution")
+}
+
+model WeeklyPerformance {
+  id      String @id @default(uuid())
+  name    String
+  revenue Float
+  profit  Float
+
+  @@map("weekly_performance")
+}
+
+model WeeklyActivity {
+  id     Int    @id
+  user   String
+  action String
+  time   String
+  icon   String
+  color  String
+
+  @@map("weekly_activities")
 }

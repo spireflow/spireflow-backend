@@ -6,19 +6,21 @@ import { customerSatisfactionData } from "../src/data/homepage/customerSatisfact
 import { customersData } from "../src/data/customers";
 import { eventsData } from "../src/data/events";
 import { homeSmallCardsData } from "../src/data/homepage/homeSmallCards";
+import { homeSmallCardsData as oldHomeSmallCardsData } from "../src/data/oldHomepage/homeSmallCards";
 import { performanceData } from "../src/data/analytics/performance";
 import { ordersData } from "../src/data/orders";
 import { productsData } from "../src/data/products";
-import { regionsData } from "../src/data/homepage/regions";
+import { regionsData } from "../src/data/oldHomepage/regions";
 import { revenueOverTimeData } from "../src/data/homepage/revenueOverTime";
 import { revenuePerCountryData } from "../src/data/homepage/revenuePerCountry";
 import { todaySalesData } from "../src/data/analytics/todaySales";
 import { totalProfitMonthsData } from "../src/data/analytics/totalProfitMonths";
 import { totalProfitProductsData } from "../src/data/analytics/totalProfitProducts";
-import { tradersTableData } from "../src/data/homepage/tradersTable";
 import { yearOverviewData } from "../src/data/analytics/yearOverview";
 import { marketMetricsData } from "../src/data/analytics/marketMetrics";
 import { revenueDistributionData } from "../src/data/analytics/revenueDistribution";
+import { weeklyPerformanceData } from "../src/data/homepage/weeklyPerformance";
+import { weeklyActivitiesData } from "../src/data/homepage/weeklyActivities";
 
 const prisma = new PrismaClient();
 
@@ -30,6 +32,7 @@ async function main() {
   await prisma.customerSatisfaction.deleteMany();
   await prisma.event.deleteMany();
   await prisma.homeSmallCard.deleteMany();
+  await prisma.oldHomeSmallCard.deleteMany();
   await prisma.monthPerformance.deleteMany();
   await prisma.order.deleteMany();
   await prisma.product.deleteMany();
@@ -39,10 +42,12 @@ async function main() {
   await prisma.todaySales.deleteMany();
   await prisma.totalProfitMonth.deleteMany();
   await prisma.totalProfitProduct.deleteMany();
-  await prisma.trader.deleteMany();
+  
   await prisma.yearOverview.deleteMany();
   await prisma.marketMetrics.deleteMany();
   await prisma.revenueDistribution.deleteMany();
+  await prisma.weeklyPerformance.deleteMany();
+  await prisma.weeklyActivity.deleteMany();
 
   // Seed for Assets
   for (const item of assetPerformanceData) {
@@ -72,6 +77,11 @@ async function main() {
   // Seed for Home Small Cards
   for (const item of homeSmallCardsData) {
     await prisma.homeSmallCard.create({ data: item });
+  }
+
+  // Seed for Old Home Small Cards (4 cards for legacy homepage)
+  for (const item of oldHomeSmallCardsData) {
+    await prisma.oldHomeSmallCard.create({ data: item });
   }
 
   // Seed for Month Performance
@@ -119,11 +129,6 @@ async function main() {
     await prisma.totalProfitProduct.create({ data: item });
   }
 
-  // Seed for Traders
-  for (const item of tradersTableData) {
-    await prisma.trader.create({ data: item });
-  }
-
   // Seed for Year Overview
   for (const item of yearOverviewData) {
     await prisma.yearOverview.create({ data: item });
@@ -137,6 +142,16 @@ async function main() {
   // Seed for Revenue Distribution
   for (const item of revenueDistributionData) {
     await prisma.revenueDistribution.create({ data: item });
+  }
+
+  // Seed for Weekly Performance
+  for (const item of weeklyPerformanceData) {
+    await prisma.weeklyPerformance.create({ data: item });
+  }
+
+  // Seed for Weekly Activities
+  for (const item of weeklyActivitiesData) {
+    await prisma.weeklyActivity.create({ data: item });
   }
 }
 
