@@ -1,5 +1,5 @@
 import { GraphQLObjectType, GraphQLSchema, GraphQLList } from "graphql";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "../db.js";
 
 import {
   AnalyticsType,
@@ -27,9 +27,7 @@ import {
   YearOverviewType,
   WeeklyPerformanceType,
   WeeklyActivityType,
-} from "./types";
-
-const prisma = new PrismaClient();
+} from "./types.js";
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -268,6 +266,33 @@ const RootQuery = new GraphQLObjectType({
 
 const schema: GraphQLSchema = new GraphQLSchema({
   query: RootQuery,
+  types: [
+    AssetType,
+    BestSellingProductType,
+    CustomerType,
+    CustomerSatisfactionType,
+    EventType,
+    HomeSmallCardType,
+    OldHomeSmallCardType,
+    MonthPerformanceType,
+    NotificationType,
+    OrderType,
+    ProductType,
+    RegionType,
+    RevenueDistributionType,
+    RevenueOverTimeType,
+    RevenuePerCountryType,
+    TodaySalesType,
+    TotalProfitMonthType,
+    TotalProfitProductsType,
+    YearOverviewType,
+    MarketMetricsType,
+    WeeklyPerformanceType,
+    WeeklyActivityType,
+    AnalyticsType,
+    HomepageType,
+    OldHomepageType,
+  ],
 });
 
 export default schema;

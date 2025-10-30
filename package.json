@@ -3,41 +3,49 @@
   "version": "1.0.2",
   "description": "Open source backend for Spireflow dashboard",
   "license": "MIT",
+  "type": "module",
   "author": {
     "name": "matt765",
     "email": "mateusz.wyrebek@gmail.com",
     "url": "https://matt765-portfolio.vercel.app/"
   },
-  "main": "build/server.js",
+  "main": "build/src/server.js",
   "scripts": {
     "postinstall": "echo 'Skipping prisma generate during install'",
     "build": "tsc",
-    "start": "node ./build/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./build/src/server.js",
+    "dev": "node --watch ./build/src/server.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "engines": {
     "node": ">=18.18.0",
     "npm": ">=7.19"
   },
   "dependencies": {
-    "@prisma/client": "^6.8.2",
-    "@prisma/extension-accelerate": "^2.0.0",
-    "@types/cors": "^2.8.18",
-    "@types/express": "^5.0.2",
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "express-graphql": "^0.12.0",
-    "graphql": "^15.8.0",
+    "@better-auth/cli": "^1.3.30",
+    "@fastify/compress": "^8.1.0",
+    "@fastify/cors": "^11.1.0",
+    "@fastify/helmet": "^13.0.2",
+    "@fastify/rate-limit": "^10.3.0",
+    "@prisma/client": "^6.18.0",
+    "@prisma/extension-accelerate": "^2.0.2",
+    "better-auth": "^1.3.30",
+    "fastify": "^5.6.1",
+    "graphql": "^16.11.0",
     "graphql-type-json": "^0.3.2",
-    "pg": "^8.16.0",
-    "prisma": "^6.8.2",
+    "mercurius": "^16.5.0",
+    "pg": "^8.16.3",
+    "prisma": "^6.18.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
   },
   "devDependencies": {
-    "@types/node": "^24.9.0"
+    "@types/node": "^24.9.1",
+    "@vitest/ui": "^4.0.3",
+    "vitest": "^4.0.3"
   }
 }

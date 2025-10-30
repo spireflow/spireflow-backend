@@ -1,13 +1,13 @@
 import {
   GraphQLObjectType,
-  GraphQLSchema,
   GraphQLInt,
   GraphQLString,
   GraphQLList,
   GraphQLFloat,
   GraphQLBoolean,
 } from "graphql";
-import GraphQLJSON from "graphql-type-json";
+import { GraphQLJSON } from "graphql-type-json";
+
 
 // Asset Type
 export const AssetType = new GraphQLObjectType({
