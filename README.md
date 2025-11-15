@@ -36,33 +36,24 @@ Open source backend for Spireflow dashboard
 - `/api/auth/*` - Better Auth endpoints (sign-in, sign-up, session management)
 - `/health` - Health check endpoint for monitoring
 
-### GraphQL Queries
-- **Products**: Product catalog with metrics and parameters
-- **Orders**: Order management with delivery tracking
-- **Customers**: Customer database with purchase history
-- **Analytics**: Revenue, performance, and market metrics
-- **Homepage**: Aggregated dashboard data (best sellers, revenue charts, activities)
-- **Notifications**: System notifications
-- **Events**: Event tracking
-
 ### Security Measures
-- ✅ Helmet security headers (XSS, MIME sniffing, clickjacking protection)
-- ✅ Rate limiting (100 requests/minute in production)
-- ✅ CORS whitelist with credentials support
-- ✅ GraphQL query depth limiting
-- ✅ Environment variable validation at startup
-- ✅ Prisma ORM (SQL injection prevention)
-- ✅ Session-based authentication (7-day expiry, 24h refresh)
-- ✅ Graceful shutdown handlers
+- Helmet security headers (XSS, MIME sniffing, clickjacking protection)
+- Rate limiting (100 requests/minute in production)
+- CORS whitelist with credentials support
+- GraphQL query depth limiting
+- Environment variable validation at startup
+- Prisma ORM (SQL injection prevention)
+- Session-based authentication (7-day expiry, 24h refresh)
+- Graceful shutdown handlers
 
 ### Performance Optimizations
-- ✅ Fastify framework (42k req/s vs Express 15k req/s)
-- ✅ gzip/deflate compression (70% bandwidth reduction)
-- ✅ CORS preflight caching (24 hours)
-- ✅ Prisma connection pooling
-- ✅ Pino structured logging (fastest Node.js logger)
-- ✅ GraphQL schema caching
-- ✅ ESM modules with top-level await
+- Fastify framework (42k req/s vs Express 15k req/s)
+- gzip/deflate compression (70% bandwidth reduction)
+- CORS preflight caching (24 hours)
+- Prisma connection pooling
+- Pino structured logging (fastest Node.js logger)
+- GraphQL schema caching
+- ESM modules with top-level await
 
 ## Frontend
 

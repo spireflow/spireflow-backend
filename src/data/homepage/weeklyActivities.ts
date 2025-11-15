@@ -1,6 +1,6 @@
 type WeeklyActivity = {
   id: number;
-  user: string;
+  user?: string;
   action: string;
   time: string;
   icon: string;
@@ -10,16 +10,14 @@ type WeeklyActivity = {
 export const weeklyActivitiesData: WeeklyActivity[] = [
   {
     id: 1,
-    user: "Henry",
-    action: "uploaded smartfirm file",
+    action: "Henry uploaded quarterly report",
     time: "1 day ago",
     icon: "document",
     color: "green",
   },
   {
     id: 2,
-    user: "You",
-    action: "assigned @Renee to do illustration of process",
+    action: "New traders completed first purchase",
     time: "2 days ago",
     icon: "users",
     color: "blue",

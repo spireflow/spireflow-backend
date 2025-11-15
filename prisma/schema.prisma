@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -238,8 +237,8 @@ model WeeklyPerformance {
 }
 
 model WeeklyActivity {
-  id     Int    @id
-  user   String
+  id     Int     @id
+  user   String?
   action String
   time   String
   icon   String

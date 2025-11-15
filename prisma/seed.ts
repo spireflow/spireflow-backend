@@ -6,7 +6,8 @@ import { customerSatisfactionData } from "../src/data/homepage/customerSatisfact
 import { customersData } from "../src/data/customers.js";
 import { eventsData } from "../src/data/events.js";
 import { homeSmallCardsData } from "../src/data/homepage/homeSmallCards.js";
-import { homeSmallCardsData as homepage2SmallCardsData } from "../src/data/homepage/homeSmallCards.js";
+import { homeSmallCardsData as homepage2SmallCardsData } from "../src/data/homepage2/homeSmallCards.js";
+import { regionsData } from "../src/data/homepage2/regions.js";
 import { performanceData } from "../src/data/analytics/performance.js";
 import { ordersData } from "../src/data/orders.js";
 import { productsData } from "../src/data/products.js";
@@ -103,6 +104,11 @@ async function main() {
   // Seed for Revenue Per Country
   for (const item of revenuePerCountryData) {
     await prisma.revenuePerCountry.create({ data: item });
+  }
+
+  // Seed for Regions
+  for (const item of regionsData) {
+    await prisma.region.create({ data: item });
   }
 
   // Seed for Revenue Over Time
