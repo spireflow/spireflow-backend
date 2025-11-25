@@ -4,91 +4,81 @@ Open source backend for Spireflow dashboard
 
 ## Tech stack
 
-**Core:**
-- Node.js 20+ with TypeScript 5.9
-- Fastify 5.6 - High-performance web framework (3x faster than Express)
-- PostgreSQL - Primary database
-- Prisma 6.18 - Type-safe ORM with migrations
+NodeJS, Fastify, PostgreSQL, Prisma, GraphQL, Docker, Better Auth
 
-**GraphQL:**
-- Mercurius 16.5 - Official Fastify GraphQL plugin
-- GraphQL 16.11 - Schema-first API design
+## Endpoints
 
-**Authentication:**
-- Better Auth 1.3 - Self-hosted authentication with Prisma adapter
-- Email/Password authentication with session management
-
-**Security & Performance:**
-- @fastify/helmet - Security headers (XSS, clickjacking protection)
-- @fastify/rate-limit - DOS attack prevention (100 req/min production)
-- @fastify/cors - CORS with origin whitelist and preflight caching
-- @fastify/compress - gzip/deflate compression (70% bandwidth reduction)
-- Query depth limiting (max 12 levels) - Prevents expensive nested queries
-
-**Testing:**
-- Vitest 4.0 - Fast unit testing framework
-- @vitest/ui - Interactive test UI
-
-## Features
-
-### API Endpoints
 - `/graphql` - GraphQL API with 25+ queries (products, orders, customers, analytics, etc.)
 - `/api/auth/*` - Better Auth endpoints (sign-in, sign-up, session management)
 - `/health` - Health check endpoint for monitoring
 
-### Security Measures
-- Helmet security headers (XSS, MIME sniffing, clickjacking protection)
-- Rate limiting (100 requests/minute in production)
-- CORS whitelist with credentials support
-- GraphQL query depth limiting
-- Environment variable validation at startup
-- Prisma ORM (SQL injection prevention)
-- Session-based authentication (7-day expiry, 24h refresh)
-- Graceful shutdown handlers
+## Data flow
 
-### Performance Optimizations
-- Fastify framework (42k req/s vs Express 15k req/s)
-- gzip/deflate compression (70% bandwidth reduction)
-- CORS preflight caching (24 hours)
-- Prisma connection pooling
-- Pino structured logging (fastest Node.js logger)
-- GraphQL schema caching
-- ESM modules with top-level await
+```mermaid
+graph LR
+    A[Frontend] -->|GraphQL| B[Fastify Server]
+    A -->|Auth API| B
+    B -->|Mercurius| C[GraphQL Schema]
+    B -->|Better Auth| D[Auth Logic]
+    C -->|Prisma Client| E[PostgreSQL]
+    D -->|Prisma Adapter| E
+```
 
 ## Frontend
 
-This backend fetches data from PostgreSQL database and sends it to associated NextJS frontend application
+This backend serves data to the Spireflow dashboard via GraphQL API and handles authentication through Better Auth.
 
-[https://github.com/matt765/spireflow](https://github.com/matt765/spireflow)
+**Important:** The frontend works independently without backend by default. It will automatically use mock data from `backendBackup.json` and keep routes protection disabled if backend is not configured. Connect this backend only when you want real database functionality and authentication.
+
+Frontend repository: [https://github.com/matt765/spireflow](https://github.com/matt765/spireflow)
 
 ## Project Structure
 
 ```
 ├── prisma
-│   ├── migrations         # Database migrations
-│   ├── schema.prisma      # Database schema
-│   └── seed.ts           # Database seeding script
+│   ├── migrations           # Database migrations
+│   ├── schema.prisma        # Database schema
+│   └── seed.ts              # Database seeding script
 ├── src
-│   ├── assets            # Static assets
-│   ├── data              # Mock data for seeding
-│   │   ├── analytics     # Analytics data
-│   │   └── homepage      # Homepage data
+│   ├── assets               # Static assets
+│   ├── data                 # Mock data for seeding
+│   │   ├── analytics        # Analytics data
+│   │   └── homepage         # Homepage data
 │   ├── graphql
-│   │   ├── schema.ts     # GraphQL schema & resolvers
-│   │   └── types.ts      # GraphQL type definitions
+│   │   ├── schema.ts        # GraphQL schema & resolvers
+│   │   └── types.ts         # GraphQL type definitions
 │   ├── tests
-│   │   ├── helper.ts     # Test utilities
+│   │   ├── helper.ts        # Test utilities
 │   │   ├── health.test.ts   # Health endpoint tests
 │   │   ├── graphql.test.ts  # GraphQL API tests
 │   │   └── auth.test.ts     # Authentication tests
-│   ├── auth.ts           # Better Auth configuration
-│   ├── config.ts         # Environment validation
-│   ├── db.ts             # Prisma client (singleton)
-│   └── server.ts         # Fastify server setup
+│   ├── auth.ts              # Better Auth configuration
+│   ├── config.ts            # Environment validation
+│   ├── db.ts                # Prisma client
+│   └── server.ts            # Fastify server setup
 └── package.json
 ```
 
-## Environment Variables
+## How to run
+
+You can deploy this backend on services like AWS, Back4App, Render or Heroku. Alternatively, you can run it locally using commands below and access the data using GraphQL UI http://localhost:4000/graphql or Prisma Studio http://localhost:5555/
+
+### Localhost
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/matt765/spireflow-backend.git
+cd spireflow-backend
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Set up environment variables:
 
 Create a `.env` file in the root directory with the following variables:
 
@@ -99,32 +89,63 @@ DATABASE_URL=postgresql://user:password@localhost:5432/dbname
 # Better Auth (Required)
 BETTER_AUTH_SECRET=your-secret-key-here-generate-with-openssl-rand-base64-32
 BETTER_AUTH_URL=http://localhost:4000/api/auth
-
-# Server Configuration (Optional)
-NODE_ENV=development
-PORT=4000
-HOST=0.0.0.0
-
-# CORS (Optional - for production)
-ALLOWED_ORIGINS=https://your-frontend.vercel.app
 ```
 
-## How to run
+Generate secret key: `openssl rand -base64 32`
 
-You can deploy this backend on services like Render, Railway, Heroku, or DigitalOcean. Alternatively, you can run it locally using commands below and access the data using GraphQL UI http://localhost:4000/graphql or Prisma Studio http://localhost:5555/
+4. Set up database:
 
-All commands are run from the root of the project, from a terminal.
+Ensure you have a PostgreSQL database running.
 
-### Development
+```bash
+npx prisma migrate deploy
+npx prisma db seed
+```
 
-| Command            | Action                                      |
-| :----------------- | :------------------------------------------ |
-| `npm install`      | Installs dependencies                       |
-| `npm run build`    | Compiles TypeScript to JavaScript           |
-| `npm run dev`      | Starts dev server with hot reload           |
-| `npm start`        | Starts production server at `localhost:4000`|
-| `npm test`         | Runs test suite                             |
-| `npm run test:watch` | Runs tests in watch mode                  |
+5. Build and start:
+
+```bash
+npm run build
+npm run dev
+```
+
+Server will be available at:
+
+- GraphQL API: `http://localhost:4000/graphql`
+- Better Auth: `http://localhost:4000/api/auth`
+- Health check: `http://localhost:4000/health`
+
+### Remote Deployment
+
+**Configuration:**
+
+1. Set `NODE_ENV=production`
+2. Set `DATABASE_URL` to your PostgreSQL connection string
+3. Generate and set `BETTER_AUTH_SECRET`: `openssl rand -base64 32`
+4. Set `BETTER_AUTH_URL` to your production URL (e.g., `https://your-api.railway.app/api/auth`)
+5. Set `ALLOWED_ORIGINS` to your frontend domain (e.g., `https://your-app.vercel.app`)
+
+**Build & Start Commands:**
+
+Most platforms will ask for build and start commands. Use the following:
+
+- **Build Command:** `npm install && npx prisma generate && npm run build`
+- **Start Command:** `npx prisma migrate deploy && npm start`
+
+> Note: We include `prisma migrate deploy` in the start command to ensure database migrations are applied automatically during deployment.
+
+**Tip:** You can also run migrations and seed the remote database from your local machine. simply set the `DATABASE_URL` in your local `.env` file to your remote database connection string and run `npx prisma migrate deploy` and `npx prisma db seed`.
+
+### Available Commands
+
+| Command              | Action                                       |
+| :------------------- | :------------------------------------------- |
+| `npm install`        | Installs dependencies                        |
+| `npm run build`      | Compiles TypeScript to JavaScript            |
+| `npm run dev`        | Starts dev server with hot reload            |
+| `npm start`          | Starts production server at `localhost:4000` |
+| `npm test`           | Runs test suite                              |
+| `npm run test:watch` | Runs tests in watch mode                     |
 
 ### Prisma
 
@@ -136,37 +157,20 @@ All commands are run from the root of the project, from a terminal.
 | `npx prisma db seed`                 | Seeds database with mock data                          |
 | `npx prisma studio`                  | Opens Prisma Studio at `localhost:5555`                |
 
-## Deployment
+### Connecting Frontend
 
-### Environment Setup
-1. Set `NODE_ENV=production`
-2. Set `ALLOWED_ORIGINS` to your frontend domain
-3. Set `DATABASE_URL` to your PostgreSQL connection string
-4. Generate `BETTER_AUTH_SECRET` using: `openssl rand -base64 32`
-5. Set `BETTER_AUTH_URL` to your production auth endpoint
+After deploying backend, update your front-end `.env` file. Follow front-end README.md for specific instructions.
 
-### Deployment Steps
-1. Build: `npm run build`
-2. Migrate database: `npx prisma migrate deploy`
-3. Start server: `npm start`
+## Security & Performance
 
-### Platform-Specific Notes
-
-**Render / Railway:**
-- Set build command: `npm run build`
-- Set start command: `npm start`
-- Add PostgreSQL addon
-- Configure environment variables
-
-**Heroku:**
-- Use Heroku Postgres addon
-- Set buildpacks: `heroku/nodejs`
-- Configure Config Vars in dashboard
-
-**Vercel / Netlify:**
-- Not recommended (designed for serverless)
-- Use Render/Railway for persistent Node.js processes
-| `npx prisma studio`                  | Opens Prisma Studio                                    |
+- **Fastify Framework** - High-performance web framework (42k req/s)
+- **Security Headers** - Helmet protection against XSS, clickjacking, and MIME sniffing
+- **Rate Limiting** - DOS attack prevention (100 req/min in production)
+- **CORS Protection** - Origin whitelist with credentials support and preflight caching
+- **Compression** - Gzip/deflate support reducing bandwidth by up to 70%
+- **Query Depth Limiting** - Prevents expensive nested GraphQL queries (max 12 levels)
+- **Prisma ORM** - Built-in SQL injection prevention and connection pooling
+- **Session Management** - Secure authentication with 7-day expiry and 24h refresh
 
 ## Docker support
 
