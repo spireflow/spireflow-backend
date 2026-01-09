@@ -28,7 +28,7 @@ graph LR
 
 This backend serves data to the Spireflow dashboard via GraphQL API and handles authentication through Better Auth.
 
-**Important:** The frontend works independently without backend by default. It will automatically use mock data from `backendBackup.json` and keep routes protection disabled if backend is not configured. Connect this backend only when you want real database functionality and authentication.
+**Important:** The frontend works independently without backend by default. It will automatically use mock data from `backendBackup.json` and keep routes protection disabled if backend is not configured. You can connect this backend if you want real database functionality and authentication.
 
 Frontend repository: [https://github.com/matt765/spireflow](https://github.com/matt765/spireflow)
 
@@ -134,7 +134,7 @@ Most platforms will ask for build and start commands. Use the following:
 
 > Note: We include `prisma migrate deploy` in the start command to ensure database migrations are applied automatically during deployment.
 
-**Tip:** You can also run migrations and seed the remote database from your local machine. simply set the `DATABASE_URL` in your local `.env` file to your remote database connection string and run `npx prisma migrate deploy` and `npx prisma db seed`.
+**Tip:** You can also run migrations and seed the remote database from your local machine. Simply set the `DATABASE_URL` in your local `.env` file to your remote database connection string and run `npx prisma migrate deploy` and `npx prisma db seed`.
 
 ### Available Commands
 
@@ -152,14 +152,14 @@ Most platforms will ask for build and start commands. Use the following:
 | Command                              | Action                                                 |
 | :----------------------------------- | :----------------------------------------------------- |
 | `npx prisma migrate dev --name init` | Creates and applies migrations based on schema changes |
-| `npx prisma migrate deploy`          | Applies existing migrations (production)               |
+| `npx prisma migrate deploy`          | Applies existing migrations                            |
 | `npx prisma generate`                | Generates Prisma Client from schema                    |
 | `npx prisma db seed`                 | Seeds database with mock data                          |
 | `npx prisma studio`                  | Opens Prisma Studio at `localhost:5555`                |
 
 ### Connecting Frontend
 
-After deploying backend, update your front-end `.env` file. Follow front-end README.md for specific instructions.
+After deploying backend, you can update your front-end `.env` file. Follow front-end README.md for specific instructions.
 
 ## Security & Performance
 

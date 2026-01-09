@@ -70,9 +70,9 @@ export const EventType = new GraphQLObjectType({
   }),
 });
 
-// HomeSmallCard Type
-export const HomeSmallCardType = new GraphQLObjectType({
-  name: "HomeSmallCard",
+// ThreeSmallCard Type (3 cards for homepage)
+export const ThreeSmallCardType = new GraphQLObjectType({
+  name: "ThreeSmallCard",
   fields: () => ({
     id: { type: GraphQLString },
     title: { type: GraphQLString },
@@ -88,9 +88,9 @@ export const HomeSmallCardType = new GraphQLObjectType({
   }),
 });
 
-// HomeSmallCard2 Type (for Homepage 2)
-export const HomeSmallCard2Type = new GraphQLObjectType({
-  name: "HomeSmallCard2",
+// FourSmallCard Type (4 cards for Homepage V2)
+export const FourSmallCardType = new GraphQLObjectType({
+  name: "FourSmallCard",
   fields: () => ({
     id: { type: GraphQLString },
     title: { type: GraphQLString },
@@ -194,19 +194,6 @@ export const RevenuePerCountryType = new GraphQLObjectType({
   }),
 });
 
-// Region Type
-export const RegionType = new GraphQLObjectType({
-  name: "Region",
-  fields: () => ({
-    id: { type: GraphQLString },
-    name: { type: GraphQLString },
-    region: { type: GraphQLString },
-    sales: { type: GraphQLInt },
-    delta: { type: GraphQLString },
-    deltaType: { type: GraphQLString },
-  }),
-});
-
 // RevenueOverTime Type
 export const RevenueOverTimeType = new GraphQLObjectType({
   name: "RevenueOverTime",
@@ -289,11 +276,11 @@ export const RevenueDistributionType = new GraphQLObjectType({
 export const AnalyticsType = new GraphQLObjectType({
   name: "Analytics",
   fields: () => ({
-    assetPerformance: { type: new GraphQLList(AssetType) },
-    performance: { type: new GraphQLList(MonthPerformanceType) },
+    assets: { type: new GraphQLList(AssetType) },
+    monthPerformance: { type: new GraphQLList(MonthPerformanceType) },
     todaySales: { type: new GraphQLList(TodaySalesType) },
     totalProfitProducts: { type: new GraphQLList(TotalProfitProductsType) },
-    totalProfitSales: { type: new GraphQLList(TotalProfitMonthType) },
+    totalProfitMonths: { type: new GraphQLList(TotalProfitMonthType) },
     yearOverview: { type: new GraphQLList(YearOverviewType) },
     marketMetrics: { type: new GraphQLList(MarketMetricsType) },
     revenueDistribution: { type: new GraphQLList(RevenueDistributionType) },
@@ -305,22 +292,11 @@ export const HomepageType = new GraphQLObjectType({
   fields: () => ({
     bestSellingProducts: { type: new GraphQLList(BestSellingProductType) },
     customerSatisfaction: { type: new GraphQLList(CustomerSatisfactionType) },
-    homeSmallCards: { type: new GraphQLList(HomeSmallCardType) },
+    threeSmallCards: { type: new GraphQLList(ThreeSmallCardType) },
+    fourSmallCards: { type: new GraphQLList(FourSmallCardType) },
     revenueOverTime: { type: new GraphQLList(RevenueOverTimeType) },
     revenuePerCountry: { type: new GraphQLList(RevenuePerCountryType) },
     weeklyPerformance: { type: new GraphQLList(WeeklyPerformanceType) },
     weeklyActivities: { type: new GraphQLList(WeeklyActivityType) },
-  }),
-});
-
-export const Homepage2Type = new GraphQLObjectType({
-  name: "Homepage2",
-  fields: () => ({
-    bestSellingProducts: { type: new GraphQLList(BestSellingProductType) },
-    customerSatisfaction: { type: new GraphQLList(CustomerSatisfactionType) },
-    homeSmallCards: { type: new GraphQLList(HomeSmallCard2Type) },
-    regions: { type: new GraphQLList(RegionType) },
-    revenueOverTime: { type: new GraphQLList(RevenueOverTimeType) },
-    revenuePerCountry: { type: new GraphQLList(RevenuePerCountryType) },
   }),
 });

@@ -8,16 +8,14 @@ import {
   CustomerSatisfactionType,
   CustomerType,
   EventType,
-  HomeSmallCardType,
-  HomeSmallCard2Type,
+  ThreeSmallCardType,
+  FourSmallCardType,
   HomepageType,
-  Homepage2Type,
   MarketMetricsType,
   MonthPerformanceType,
   NotificationType,
   OrderType,
   ProductType,
-  RegionType,
   RevenueDistributionType,
   RevenueOverTimeType,
   RevenuePerCountryType,
@@ -62,16 +60,16 @@ const RootQuery = new GraphQLObjectType({
         return prisma.event.findMany();
       },
     },
-    homeSmallCards: {
-      type: new GraphQLList(HomeSmallCardType),
+    threeSmallCards: {
+      type: new GraphQLList(ThreeSmallCardType),
       resolve() {
-        return prisma.homeSmallCard.findMany();
+        return prisma.threeSmallCard.findMany();
       },
     },
-    homeSmallCards2: {
-      type: new GraphQLList(HomeSmallCard2Type),
+    fourSmallCards: {
+      type: new GraphQLList(FourSmallCardType),
       resolve() {
-        return prisma.homeSmallCard2.findMany();
+        return prisma.fourSmallCard.findMany();
       },
     },
     monthPerformance: {
@@ -96,12 +94,6 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(RevenuePerCountryType),
       resolve() {
         return prisma.revenuePerCountry.findMany();
-      },
-    },
-    regions: {
-      type: new GraphQLList(RegionType),
-      resolve() {
-        return prisma.region.findMany();
       },
     },
     revenueOverTime: {
@@ -180,19 +172,19 @@ const RootQuery = new GraphQLObjectType({
         ]).then(
           ([
             assets,
-            performance,
+            monthPerformance,
             todaySales,
             totalProfitProducts,
-            totalProfitSales,
+            totalProfitMonths,
             yearOverview,
             marketMetrics,
             revenueDistribution,
           ]) => ({
-            assetPerformance: assets,
-            performance,
+            assets,
+            monthPerformance,
             todaySales,
             totalProfitProducts,
-            totalProfitSales,
+            totalProfitMonths,
             yearOverview,
             marketMetrics,
             revenueDistribution,
@@ -206,7 +198,8 @@ const RootQuery = new GraphQLObjectType({
         return Promise.all([
           prisma.bestSellingProduct.findMany(),
           prisma.customerSatisfaction.findMany(),
-          prisma.homeSmallCard.findMany(),
+          prisma.threeSmallCard.findMany(),
+          prisma.fourSmallCard.findMany(),
           prisma.revenueOverTime.findMany(),
           prisma.revenuePerCountry.findMany(),
           prisma.weeklyPerformance.findMany(),
@@ -215,7 +208,8 @@ const RootQuery = new GraphQLObjectType({
           ([
             bestSellingProducts,
             customerSatisfaction,
-            homeSmallCards,
+            threeSmallCards,
+            fourSmallCards,
             revenueOverTime,
             revenuePerCountry,
             weeklyPerformance,
@@ -223,40 +217,12 @@ const RootQuery = new GraphQLObjectType({
           ]) => ({
             bestSellingProducts,
             customerSatisfaction,
-            homeSmallCards,
+            threeSmallCards,
+            fourSmallCards,
             revenueOverTime,
             revenuePerCountry,
             weeklyPerformance,
             weeklyActivities,
-          })
-        );
-      },
-    },
-    homepage2: {
-      type: Homepage2Type,
-      resolve() {
-        return Promise.all([
-          prisma.bestSellingProduct.findMany(),
-          prisma.customerSatisfaction.findMany(),
-          prisma.homeSmallCard2.findMany(),
-          prisma.region.findMany(),
-          prisma.revenueOverTime.findMany(),
-          prisma.revenuePerCountry.findMany(),
-        ]).then(
-          ([
-            bestSellingProducts,
-            customerSatisfaction,
-            homeSmallCards,
-            regions,
-            revenueOverTime,
-            revenuePerCountry,
-          ]) => ({
-            bestSellingProducts,
-            customerSatisfaction,
-            homeSmallCards,
-            regions,
-            revenueOverTime,
-            revenuePerCountry,
           })
         );
       },
@@ -272,13 +238,12 @@ const schema: GraphQLSchema = new GraphQLSchema({
     CustomerType,
     CustomerSatisfactionType,
     EventType,
-    HomeSmallCardType,
-    HomeSmallCard2Type,
+    ThreeSmallCardType,
+    FourSmallCardType,
     MonthPerformanceType,
     NotificationType,
     OrderType,
     ProductType,
-    RegionType,
     RevenueDistributionType,
     RevenueOverTimeType,
     RevenuePerCountryType,
@@ -291,7 +256,6 @@ const schema: GraphQLSchema = new GraphQLSchema({
     WeeklyActivityType,
     AnalyticsType,
     HomepageType,
-    Homepage2Type,
   ],
 });
 

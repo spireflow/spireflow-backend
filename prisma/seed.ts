@@ -1,3 +1,5 @@
+import { Pool } from "pg";
+import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@prisma/client";
 
 import { assetPerformanceData } from "../src/data/analytics/assetPerformance.js";
@@ -5,9 +7,8 @@ import { bestSellingProductsData } from "../src/data/homepage/bestSellingProduct
 import { customerSatisfactionData } from "../src/data/homepage/customerSatisfaction.js";
 import { customersData } from "../src/data/customers.js";
 import { eventsData } from "../src/data/events.js";
-import { homeSmallCardsData } from "../src/data/homepage/homeSmallCards.js";
-import { homeSmallCardsData as homepage2SmallCardsData } from "../src/data/homepage2/homeSmallCards.js";
-import { regionsData } from "../src/data/homepage2/regions.js";
+import { threeSmallCardsData } from "../src/data/homepage/threeSmallCards.js";
+import { fourSmallCardsData } from "../src/data/homepage/fourSmallCards.js";
 import { performanceData } from "../src/data/analytics/performance.js";
 import { ordersData } from "../src/data/orders.js";
 import { productsData } from "../src/data/products.js";
@@ -23,7 +24,10 @@ import { weeklyPerformanceData } from "../src/data/homepage/weeklyPerformance.js
 import { weeklyActivitiesData } from "../src/data/homepage/weeklyActivities.js";
 import { notificationsData } from "../src/data/notifications.js";
 
-const prisma = new PrismaClient();
+const connectionString = process.env.DATABASE_URL;
+const pool = new Pool({ connectionString });
+const adapter = new PrismaPg(pool);
+const prisma = new PrismaClient({ adapter });
 
 async function main() {
   // Clear existing data first
@@ -32,13 +36,12 @@ async function main() {
   await prisma.customer.deleteMany();
   await prisma.customerSatisfaction.deleteMany();
   await prisma.event.deleteMany();
-  await prisma.homeSmallCard.deleteMany();
-  await prisma.homeSmallCard2.deleteMany();
+  await prisma.threeSmallCard.deleteMany();
+  await prisma.fourSmallCard.deleteMany();
   await prisma.monthPerformance.deleteMany();
   await prisma.order.deleteMany();
   await prisma.product.deleteMany();
   await prisma.revenuePerCountry.deleteMany();
-  await prisma.region.deleteMany();
   await prisma.revenueOverTime.deleteMany();
   await prisma.todaySales.deleteMany();
   await prisma.totalProfitMonth.deleteMany();
@@ -76,14 +79,14 @@ async function main() {
     await prisma.event.create({ data: item });
   }
 
-  // Seed for Home Small Cards
-  for (const item of homeSmallCardsData) {
-    await prisma.homeSmallCard.create({ data: item });
+  // Seed for Three Small Cards (3 cards for Homepage V1)
+  for (const item of threeSmallCardsData) {
+    await prisma.threeSmallCard.create({ data: item });
   }
 
-  // Seed for Homepage 2 Small Cards (4 cards for homepage 2)
-  for (const item of homepage2SmallCardsData) {
-    await prisma.homeSmallCard2.create({ data: item });
+  // Seed for Four Small Cards (4 cards for Homepage V2)
+  for (const item of fourSmallCardsData) {
+    await prisma.fourSmallCard.create({ data: item });
   }
 
   // Seed for Month Performance
@@ -104,11 +107,6 @@ async function main() {
   // Seed for Revenue Per Country
   for (const item of revenuePerCountryData) {
     await prisma.revenuePerCountry.create({ data: item });
-  }
-
-  // Seed for Regions
-  for (const item of regionsData) {
-    await prisma.region.create({ data: item });
   }
 
   // Seed for Revenue Over Time

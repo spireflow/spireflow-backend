@@ -1,9 +1,9 @@
-type HomeSmallCardChartData = {
+type ThreeSmallCardChartData = {
   date: string;
   metric: number;
 };
 
-type HomeSmallCard = {
+type ThreeSmallCard = {
   title: string;
   metric: string;
   metricPrev: string;
@@ -13,10 +13,10 @@ type HomeSmallCard = {
   increased: boolean;
   changeValue: number;
   changeText: string;
-  chartData: HomeSmallCardChartData[];
+  chartData: ThreeSmallCardChartData[];
 };
 
-export const homeSmallCardsData: HomeSmallCard[] = [
+export const threeSmallCardsData: ThreeSmallCard[] = [
   {
     title: "Sales",
     metric: "$12,699",
@@ -81,28 +81,6 @@ export const homeSmallCardsData: HomeSmallCard[] = [
       { date: "26.10.23 18:00", metric: 2600 },
       { date: "26.10.23 21:00", metric: 3200 },
       { date: "26.10.23 23:59", metric: 2300 },
-    ],
-  },
-  {
-    title: "Customers",
-    metric: "1042",
-    metricPrev: "856",
-    delta: "25.3%",
-    deltaType: "moderateIncrease",
-    color: "cyan",
-    increased: true,
-    changeValue: 22.7,
-    changeText: "Last week",
-    chartData: [
-      { date: "02.10.23", metric: 1050 },
-      { date: "06.10.23", metric: 1780 },
-      { date: "10.10.23", metric: 890 },
-      { date: "14.10.23", metric: 1520 },
-      { date: "18.10.23", metric: 980 },
-      { date: "22.10.23", metric: 1210 },
-      { date: "26.10.23", metric: 440 },
-      { date: "30.10.23", metric: 730 },
-      { date: "01.11.23", metric: 1390 },
     ],
   },
 ];

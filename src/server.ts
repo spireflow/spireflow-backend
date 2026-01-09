@@ -1,3 +1,4 @@
+import "dotenv/config";
 import Fastify from "fastify";
 import mercurius from "mercurius";
 import cors from "@fastify/cors";

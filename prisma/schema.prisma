@@ -58,7 +58,7 @@ model Event {
   @@map("events")
 }
 
-model HomeSmallCard {
+model ThreeSmallCard {
   id          String  @id @default(uuid())
   title       String
   metric      String
@@ -71,10 +71,10 @@ model HomeSmallCard {
   changeText  String
   chartData   Json
 
-  @@map("home_small_cards")
+  @@map("three_small_cards")
 }
 
-model HomeSmallCard2 {
+model FourSmallCard {
   id          String  @id @default(uuid())
   title       String
   metric      String
@@ -87,23 +87,7 @@ model HomeSmallCard2 {
   changeText  String
   chartData   Json
 
-  @@map("home_small_cards_2")
-}
-
-model HomeSmallCard3 {
-  id          String  @id @default(uuid())
-  title       String
-  metric      String
-  metricPrev  String
-  delta       String
-  deltaType   String
-  color       String
-  increased   Boolean
-  changeValue Float
-  changeText  String
-  chartData   Json
-
-  @@map("home_small_cards_3")
+  @@map("four_small_cards")
 }
 
 model MonthPerformance {
@@ -147,17 +131,6 @@ model RevenuePerCountry {
   price Float
 
   @@map("revenue_per_country")
-}
-
-model Region {
-  id        String @id @default(uuid())
-  name      String
-  region    String
-  sales     Int
-  delta     String
-  deltaType String
-
-  @@map("regions")
 }
 
 model RevenueOverTime {
