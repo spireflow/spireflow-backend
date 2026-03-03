@@ -29,7 +29,7 @@ const pool = new Pool({ connectionString });
 const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
-async function main() {
+const main = async () => {
   // Clear existing data first
   await prisma.asset.deleteMany();
   await prisma.bestSellingProduct.deleteMany();
@@ -158,7 +158,7 @@ async function main() {
   for (const item of notificationsData) {
     await prisma.notification.create({ data: item });
   }
-}
+};
 
 main()
   .catch((e) => {

@@ -28,8 +28,8 @@ export const BestSellingProductType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLString },
     name: { type: GraphQLString },
+    sales: { type: GraphQLFloat },
     profit: { type: GraphQLFloat },
-    revenue: { type: GraphQLFloat },
   }),
 });
 

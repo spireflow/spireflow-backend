@@ -20,10 +20,10 @@ model Asset {
 }
 
 model BestSellingProduct {
-  id      String @id @default(uuid())
-  name    String
-  profit  Float
-  revenue Float
+  id     String @id @default(uuid())
+  name   String
+  sales  Float
+  profit Float
 
   @@map("best_selling_products")
 }
@@ -257,6 +257,7 @@ model Session {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([token])
+  @@index([userId])
   @@map("session")
 }
 
@@ -276,6 +277,7 @@ model Account {
   createdAt             DateTime  @default(now())
   updatedAt             DateTime  @updatedAt
 
+  @@index([userId])
   @@map("account")
 }
 

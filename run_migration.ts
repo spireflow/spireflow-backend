@@ -4,7 +4,7 @@ import * as path from "path";
 
 const prisma = new PrismaClient();
 
-async function runMigration() {
+const runMigration = async () => {
   try {
     console.log("🔄 Reading migration SQL...");
     const sql = fs.readFileSync(
@@ -22,6 +22,6 @@ async function runMigration() {
   } finally {
     await prisma.$disconnect();
   }
-}
+};
 
 runMigration();
