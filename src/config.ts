@@ -19,10 +19,7 @@ interface EnvConfig {
  * @throws {Error} If required environment variables are missing
  */
 export const validateEnv = (): EnvConfig => {
-  const requiredVars = [
-    "DATABASE_URL",
-    "BETTER_AUTH_SECRET",
-  ] as const;
+  const requiredVars = ["DATABASE_URL", "BETTER_AUTH_SECRET"] as const;
 
   const missing: string[] = [];
 
@@ -35,7 +32,7 @@ export const validateEnv = (): EnvConfig => {
   if (missing.length > 0) {
     throw new Error(
       `Missing required environment variables: ${missing.join(", ")}\n` +
-        `Please check your .env file and ensure all required variables are set.`
+        `Please check your .env file and ensure all required variables are set.`,
     );
   }
 
@@ -43,7 +40,8 @@ export const validateEnv = (): EnvConfig => {
   const config: EnvConfig = {
     DATABASE_URL: process.env.DATABASE_URL!,
     BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET!,
-    BETTER_AUTH_URL: process.env.BETTER_AUTH_URL || "http://localhost:4000/api/auth",
+    BETTER_AUTH_URL:
+      process.env.BETTER_AUTH_URL || "http://localhost:4000/api/auth",
     NODE_ENV: process.env.NODE_ENV || "development",
     PORT: process.env.PORT || "4000",
     HOST: process.env.HOST || "0.0.0.0",
@@ -61,7 +59,8 @@ export const getEnvConfig = (): EnvConfig => {
   return {
     DATABASE_URL: process.env.DATABASE_URL!,
     BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET!,
-    BETTER_AUTH_URL: process.env.BETTER_AUTH_URL || "http://localhost:4000/api/auth",
+    BETTER_AUTH_URL:
+      process.env.BETTER_AUTH_URL || "http://localhost:4000/api/auth",
     NODE_ENV: process.env.NODE_ENV || "development",
     PORT: process.env.PORT || "4000",
     HOST: process.env.HOST || "0.0.0.0",

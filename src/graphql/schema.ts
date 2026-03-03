@@ -1,4 +1,4 @@
-import { GraphQLObjectType, GraphQLSchema, GraphQLList } from "graphql";
+import { GraphQLList, GraphQLObjectType, GraphQLSchema } from "graphql";
 
 import { prisma } from "../db.js";
 import {
@@ -8,23 +8,23 @@ import {
   CustomerSatisfactionType,
   CustomerType,
   EventType,
-  ThreeSmallCardType,
   FourSmallCardType,
   HomepageType,
   MarketMetricsType,
-  RevenueTrendType,
   NotificationType,
   OrderType,
   ProductType,
   RevenueDistributionType,
   RevenueOverTimeType,
   RevenuePerCountryType,
+  RevenueTrendType,
+  ThreeSmallCardType,
   TodaySalesType,
   TotalProfitMonthType,
   TotalProfitProductsType,
-  YearOverviewType,
-  WeeklyPerformanceType,
   WeeklyActivityType,
+  WeeklyPerformanceType,
+  YearOverviewType,
 } from "./types.js";
 
 const RootQuery = new GraphQLObjectType({

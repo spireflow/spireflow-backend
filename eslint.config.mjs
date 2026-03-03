@@ -1,4 +1,5 @@
 import eslint from '@eslint/js';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import { defineConfig, globalIgnores } from 'eslint/config';
@@ -16,11 +17,16 @@ export default defineConfig([
     'coverage/**',
   ]),
   {
+    plugins: {
+      'simple-import-sort': simpleImportSort,
+    },
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
     },
     rules: {
+      'simple-import-sort/imports': 'warn',
+      'simple-import-sort/exports': 'warn',
       '@typescript-eslint/no-unused-vars': [
         'warn',
         {

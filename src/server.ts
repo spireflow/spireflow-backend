@@ -1,24 +1,25 @@
 import "dotenv/config";
-import Fastify from "fastify";
-import mercurius from "mercurius";
+
+import compress from "@fastify/compress";
 import cors from "@fastify/cors";
 import helmet from "@fastify/helmet";
 import rateLimit from "@fastify/rate-limit";
-import compress from "@fastify/compress";
+import Fastify from "fastify";
 import { readFileSync } from "fs";
-import { fileURLToPath } from "url";
+import mercurius from "mercurius";
 import { dirname, join } from "path";
+import { fileURLToPath } from "url";
 
 import { auth } from "./auth.js";
-import schema from "./graphql/schema.js";
 import { validateEnv } from "./config.js";
 import { prisma } from "./db.js";
+import schema from "./graphql/schema.js";
 
 // Get package.json for version info
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const packageJson = JSON.parse(
-  readFileSync(join(__dirname, "../../package.json"), "utf-8")
+  readFileSync(join(__dirname, "../../package.json"), "utf-8"),
 );
 
 // Validate environment variables before starting
@@ -157,7 +158,7 @@ fastify.get("/health", async (request, reply) => {
   // Memory usage with percentage
   const memoryUsage = process.memoryUsage();
   const heapUsedPercent = Math.round(
-    (memoryUsage.heapUsed / memoryUsage.heapTotal) * 100
+    (memoryUsage.heapUsed / memoryUsage.heapTotal) * 100,
   );
   const memoryUsageMB = {
     rss: Math.round(memoryUsage.rss / 1024 / 1024),

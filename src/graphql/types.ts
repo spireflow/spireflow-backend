@@ -1,10 +1,10 @@
 import {
-  GraphQLObjectType,
-  GraphQLInt,
-  GraphQLString,
-  GraphQLList,
-  GraphQLFloat,
   GraphQLBoolean,
+  GraphQLFloat,
+  GraphQLInt,
+  GraphQLList,
+  GraphQLObjectType,
+  GraphQLString,
 } from "graphql";
 import { GraphQLJSON } from "graphql-type-json";
 
