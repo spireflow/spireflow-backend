@@ -1,7 +1,7 @@
 <div id="user-content-toc" align="center">
   <ul align="center" style="list-style: none;">
     <summary>
-      <h1>- Spireflow Backend -</h1>
+      <h1>Spireflow Backend</h1>
     </summary>
   </ul>
 </div>

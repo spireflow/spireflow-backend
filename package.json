@@ -1,13 +1,13 @@
 {
   "name": "spireflow-backend",
   "version": "2.0.0",
-  "description": "Open source backend for Spireflow dashboard",
+  "description": "Open source Node.js backend for Spireflow dashboard",
   "license": "MIT",
   "type": "module",
   "author": {
-    "name": "matt765",
+    "name": "Mateusz Wyrębek",
     "email": "mateusz.wyrebek@gmail.com",
-    "url": "https://matt765-portfolio.vercel.app/"
+    "url": "https://matt765.dev/"
   },
   "main": "build/src/server.js",
   "scripts": {
