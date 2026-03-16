@@ -1,0 +1,51 @@
+name: Bug Report
+description: Report a bug in the backend
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting this bug. If your issue is related to the frontend (UI, charts, components), please report it in the [main repository](https://github.com/matt765/spireflow/issues).
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened? What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: How can we reproduce this issue?
+      placeholder: |
+        1. Send request to '...'
+        2. With payload '...'
+        3. See error
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which part of the backend is affected?
+      options:
+        - GraphQL API
+        - Authentication (Better Auth)
+        - Database (Prisma)
+        - Docker
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Error output
+      description: Paste any relevant logs or error messages.
+      render: shell
+    validations:
+      required: false

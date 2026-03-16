@@ -1,36 +1,41 @@
-# Spireflow backend
+<div id="user-content-toc" align="center">
+  <ul align="center" style="list-style: none;">
+    <summary>
+      <h1>- Spireflow Backend -</h1>
+    </summary>
+  </ul>
+</div>
 
-Open source backend for Spireflow dashboard
+<div align="center">
+  <a href="https://github.com/matt765/spireflow-backend/blob/master/CHANGELOG.md" style="text-decoration: none;">
+    <img src="https://img.shields.io/badge/%20-changelog-blue?logo=readme&logoColor=white&labelColor=grey" alt="Changelog" />
+  </a>
+  <a href="https://github.com/matt765/spireflow-backend/blob/master/license" style="text-decoration: none;">
+    <img src="https://img.shields.io/badge/license-MIT-blue" alt="License" />
+  </a>
+  <a href="https://github.com/matt765/spireflow-backend/releases" style="text-decoration: none;">
+    <img src="https://img.shields.io/github/package-json/v/matt765/spireflow-backend?color=green" alt="Version" />
+  </a>
+</div>
+
+<h4 align="center">Open source Node.js backend for Spireflow dashboard</h4>
+<br />
+
+## Overview
+
+It provides data for [Spireflow](https://github.com/matt765/spireflow) — an open source dashboard starter built with Next.js & TypeScript. The GraphQL API serves 20+ queries covering homepage metrics, orders, customers, products, analytics and more, while the Better Auth enables production-ready authentication flow, handling session management and user credentials.
+
+The frontend works independently by default — it loads mock data from `backendBackup.json` and keeps route protection disabled. Connecting this backend enables real database functionality, live data fetching on each request and a complete authentication system.
 
 ## Tech stack
 
-NodeJS, Fastify, PostgreSQL, Prisma, GraphQL, Docker, Better Auth
+Node.js, Fastify, PostgreSQL, Prisma, GraphQL, Docker, Better Auth
 
 ## Endpoints
 
 - `/graphql` - GraphQL API with 25+ queries (products, orders, customers, analytics, etc.)
 - `/api/auth/*` - Better Auth endpoints (sign-in, sign-up, session management)
 - `/health` - Health check endpoint for monitoring
-
-## Data flow
-
-```mermaid
-graph LR
-    A[Frontend] -->|GraphQL| B[Fastify Server]
-    A -->|Auth API| B
-    B -->|Mercurius| C[GraphQL Schema]
-    B -->|Better Auth| D[Auth Logic]
-    C -->|Prisma Client| E[PostgreSQL]
-    D -->|Prisma Adapter| E
-```
-
-## Frontend
-
-This backend serves data to Spireflow dashboard via GraphQL API and handles authentication through Better Auth.
-
-**Important:** The frontend works independently without backend by default. It will automatically use mock data from `backendBackup.json` and keep routes protection disabled if backend is not configured. You can connect this backend if you want real database functionality and authentication.
-
-Frontend repository: [https://github.com/matt765/spireflow](https://github.com/matt765/spireflow)
 
 ## Project Structure
 
@@ -42,16 +47,11 @@ Frontend repository: [https://github.com/matt765/spireflow](https://github.com/m
 ├── src
 │   ├── assets               # Static assets
 │   ├── data                 # Mock data for seeding
-│   │   ├── analytics        # Analytics data
-│   │   └── homepage         # Homepage data
-│   ├── graphql
+│   ├── graphql              # GraphQL API layer
 │   │   ├── schema.ts        # GraphQL schema & resolvers
 │   │   └── types.ts         # GraphQL type definitions
-│   ├── tests
-│   │   ├── helper.ts        # Test utilities
-│   │   ├── health.test.ts   # Health endpoint tests
-│   │   ├── graphql.test.ts  # GraphQL API tests
-│   │   └── auth.test.ts     # Authentication tests
+│   ├── tests                # Test files
+│   │   └── helpers          # Test utilities
 │   ├── auth.ts              # Better Auth configuration
 │   ├── config.ts            # Environment validation
 │   ├── db.ts                # Prisma client
@@ -61,14 +61,14 @@ Frontend repository: [https://github.com/matt765/spireflow](https://github.com/m
 
 ## How to run
 
-You can deploy this backend on services like AWS, Back4App, Render or Heroku. Alternatively, you can run it locally using commands below and access the data in GraphQL UI http://localhost:4000/graphql or Prisma Studio http://localhost:5555/
+You can run this backend locally using commands below and access the data in GraphQL UI http://localhost:4000/graphql or Prisma Studio http://localhost:5555/. Alternatively, you can deploy it on services like AWS, Back4App, Render or Heroku.
 
 ### Localhost
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/matt765/spireflow-backend.git
+git clone https://github.com/spireflow/spireflow-backend.git
 cd spireflow-backend
 ```
 
@@ -78,31 +78,31 @@ cd spireflow-backend
 npm install
 ```
 
-3. Set up environment variables:
+3. Set up database:
+
+You need a PostgreSQL database running. You can use an existing local installation, spin one up with Docker, or use a free cloud provider of your choice.
+
+4. Set up environment variables:
 
 Create a `.env` file in the root directory with the following variables:
 
 ```bash
-# Database (Required)
+# Database
 DATABASE_URL=postgresql://user:password@localhost:5432/dbname
 
-# Better Auth (Required)
+# Better Auth
 BETTER_AUTH_SECRET=your-secret-key-here-generate-with-openssl-rand-base64-32
 BETTER_AUTH_URL=http://localhost:4000/api/auth
 ```
 
-Generate secret key: `openssl rand -base64 32`
-
-4. Set up database:
-
-Ensure you have a PostgreSQL database running.
+5. Apply migrations and seed the database:
 
 ```bash
 npx prisma migrate deploy
 npx prisma db seed
 ```
 
-5. Run the server:
+6. Run the server:
 
 ```bash
 npm run dev
@@ -116,9 +116,7 @@ Server will be available at:
 
 ### Remote Deployment
 
-**Configuration:**
-
-Set up environment variables
+Set up a PostgreSQL database on your hosting platform, then configure environment variables
 
 1. Generate and set `BETTER_AUTH_SECRET`: `openssl rand -base64 32`
 2. Set `DATABASE_URL` to your PostgreSQL connection string
@@ -133,13 +131,13 @@ Most platforms will ask for build and start commands. Use the following:
 - **Build Command:** `npm install && npx prisma generate && npm run build`
 - **Start Command:** `npx prisma migrate deploy && npm start`
 
-> Note: This command `prisma migrate deploy` is included to ensure database migrations are applied automatically during deployment.
+After the first deployment, you need to seed the database with initial data. Set the `DATABASE_URL` in your local `.env` file to the remote database connection string and run `npx prisma migrate deploy` and `npx prisma db seed`.
 
-**Tip:** You can also run migrations and seed the remote database from your local machine. Simply set the `DATABASE_URL` in your local `.env` file to your remote database connection string and run `npx prisma migrate deploy` and `npx prisma db seed`.
+### Connecting Frontend
 
-> Note that commands like `prisma migrate dev` or `prisma db push --force-reset` can reset your database. You can use `prisma migrate deploy` which only applies pending migrations without touching existing data.
+After deploying backend, you can update your front-end `.env` file. Follow front-end README.md for specific instructions.
 
-### Available Commands
+## Available Commands
 
 | Command                | Action                                       |
 | :--------------------- | :------------------------------------------- |
@@ -166,13 +164,9 @@ Most platforms will ask for build and start commands. Use the following:
 | `npx prisma migrate reset`           | Drops database, re-applies all migrations and seeds    |
 | `npx prisma studio`                  | Opens Prisma Studio at `localhost:5555`                |
 
-### Connecting Frontend
-
-After deploying backend, you can update your front-end `.env` file. Follow front-end README.md for specific instructions.
-
 ## Docker support
 
-You can run this application in a containerized environment using those Docker commands
+You can run this application in a containerized environment using these Docker commands
 
 | Command                                                      | Action                                      |
 | :----------------------------------------------------------- | :------------------------------------------ |
@@ -181,6 +175,6 @@ You can run this application in a containerized environment using those Docker c
 
 ## Data viewer
 
-There is a simple data viewer available if you want to take a look at the data in table form. Please note that this backend repository serves as an optional addition to an open-source project focused primarily on the front-end part. As a result, the database schema is intentionally simpler than what a real-world production backend would require.
+There is a simple data viewer available if you want to take a look at the data in a table form. Please note that although the authentication flow is designed to be production-ready, the rest of this backend serves as an optional data source that delivers sample data for dashboard views. As a result, there is no real business logic for the data layer, and most of the database schema is intentionally simplified.
 
 https://data-viewer.spireflow.app/

@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Frontend Issues
+    url: https://github.com/matt765/spireflow/issues
+    about: Report frontend-related bugs and feature requests in the main repository
+  - name: Security Vulnerability
+    url: https://github.com/matt765/spireflow-backend/security/advisories/new
+    about: Report security vulnerabilities privately
