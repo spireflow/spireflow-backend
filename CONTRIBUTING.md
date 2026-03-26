@@ -3,12 +3,12 @@
 Hi there! 👋 Thanks for checking out the Nellavio backend.
 Every form of contribution is valuable. Below are the main ways to get involved:
 
-> For frontend-related contributions (UI, components, charts), please see the [main repository](https://github.com/matt765/nellavio).
+> For frontend-related contributions (UI, components, charts), please see the [main repository](https://github.com/nellavio/nellavio).
 
 ## 1. Share Feedback and Ideas 💡
 
-- Use the **[Discussions](https://github.com/matt765/nellavio/discussions/1)** on GitHub to share feedback, suggestions, or ideas for improvement.
-- Open an **[Issue](https://github.com/matt765/nellavio-backend/issues)** if you've found a bug or something doesn't work as expected.
+- Use the **[Discussions](https://github.com/nellavio/nellavio/discussions/1)** on GitHub to share feedback, suggestions, or ideas for improvement.
+- Open an **[Issue](https://github.com/nellavio/nellavio-backend/issues)** if you've found a bug or something doesn't work as expected.
 
 ## 2. Support Development 🔥
 
@@ -21,7 +21,7 @@ Feel free to fork the repository and submit a merge requests. If you've spotted 
 ### Development setup
 
 ```bash
-git clone https://github.com/matt765/nellavio-backend.git
+git clone https://github.com/nellavio/nellavio-backend.git
 cd nellavio-backend
 npm install
 ```

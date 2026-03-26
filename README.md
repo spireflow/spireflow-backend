@@ -7,14 +7,14 @@
 </div>
 
 <div align="center">
-  <a href="https://github.com/matt765/nellavio-backend/blob/master/CHANGELOG.md" style="text-decoration: none;">
+  <a href="https://github.com/nellavio/nellavio-backend/blob/master/CHANGELOG.md" style="text-decoration: none;">
     <img src="https://img.shields.io/badge/%20-changelog-blue?logo=readme&logoColor=white&labelColor=grey" alt="Changelog" />
   </a>
-  <a href="https://github.com/matt765/nellavio-backend/blob/master/license" style="text-decoration: none;">
+  <a href="https://github.com/nellavio/nellavio-backend/blob/master/license" style="text-decoration: none;">
     <img src="https://img.shields.io/badge/license-MIT-blue" alt="License" />
   </a>
-  <a href="https://github.com/matt765/nellavio-backend/releases" style="text-decoration: none;">
-    <img src="https://img.shields.io/github/package-json/v/matt765/nellavio-backend?color=green" alt="Version" />
+  <a href="https://github.com/nellavio/nellavio-backend/releases" style="text-decoration: none;">
+    <img src="https://img.shields.io/github/package-json/v/nellavio/nellavio-backend?color=green" alt="Version" />
   </a>
 </div>
 
@@ -23,7 +23,7 @@
 
 ## Overview
 
-It provides data for [Nellavio](https://github.com/matt765/nellavio) — an open source dashboard starter built with Next.js & TypeScript. The GraphQL API serves 20+ queries covering homepage metrics, orders, customers, products, analytics and more, while the Better Auth enables production-ready authentication flow, handling session management and user credentials.
+It provides data for [Nellavio](https://github.com/nellavio/nellavio) — an open source dashboard starter built with Next.js & TypeScript. The GraphQL API serves 20+ queries covering homepage metrics, orders, customers, products, analytics and more, while the Better Auth enables production-ready authentication flow, handling session management and user credentials.
 
 The frontend works independently by default — it loads mock data from `backendBackup.json` and keeps route protection disabled. Connecting this backend enables real database functionality, live data fetching on each request and a complete authentication system.
 
