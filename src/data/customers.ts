@@ -11,7 +11,7 @@ type Customer = {
 export const customersData: Customer[] = [
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/spireflow/user1_wgcdiv.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/nellavio/user1_wgcdiv.png",
     firstName: "John",
     lastName: "Doe",
     city: "New York",
@@ -21,7 +21,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/spireflow/user2_xmli04.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/nellavio/user2_xmli04.png",
     firstName: "Jane",
     lastName: "Doe",
     city: "Los Angeles",
@@ -31,7 +31,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330268/spireflow/user3_odzqfk.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330268/nellavio/user3_odzqfk.png",
     firstName: "Alex",
     lastName: "Smith",
     city: "Chicago",
@@ -41,7 +41,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330269/spireflow/user4_e91vts.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330269/nellavio/user4_e91vts.png",
     firstName: "Amélie",
     lastName: "Martin",
     city: "San Francisco",
@@ -51,7 +51,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330270/spireflow/user5_htcbsc.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330270/nellavio/user5_htcbsc.png",
     firstName: "Henrik",
     lastName: "Larsen",
     city: "Houston",
@@ -61,7 +61,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/spireflow/user1_wgcdiv.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/nellavio/user1_wgcdiv.png",
     firstName: "Sarah",
     lastName: "Johnson",
     city: "Miami",
@@ -71,7 +71,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/spireflow/user2_xmli04.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/nellavio/user2_xmli04.png",
     firstName: "Michael",
     lastName: "Brown",
     city: "Seattle",
@@ -81,7 +81,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330268/spireflow/user3_odzqfk.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330268/nellavio/user3_odzqfk.png",
     firstName: "Robert",
     lastName: "Williams",
     city: "Boston",
@@ -91,7 +91,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330269/spireflow/user4_e91vts.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330269/nellavio/user4_e91vts.png",
     firstName: "Claire",
     lastName: "Bernard",
     city: "Houston",
@@ -101,7 +101,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330270/spireflow/user5_htcbsc.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330270/nellavio/user5_htcbsc.png",
     firstName: "Anders",
     lastName: "Haugen",
     city: "Seattle",
@@ -111,7 +111,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/spireflow/user1_wgcdiv.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/nellavio/user1_wgcdiv.png",
     firstName: "Jonas",
     lastName: "Johansen",
     city: "Berlin",
@@ -121,7 +121,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/spireflow/user2_xmli04.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/nellavio/user2_xmli04.png",
     firstName: "Emilie",
     lastName: "Halvorsen",
     city: "Hamburg",
@@ -131,7 +131,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330268/spireflow/user3_odzqfk.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330268/nellavio/user3_odzqfk.png",
     firstName: "Oskar",
     lastName: "Nilsen",
     city: "Munich",
@@ -141,7 +141,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330269/spireflow/user4_e91vts.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330269/nellavio/user4_e91vts.png",
     firstName: "Thea",
     lastName: "Lund",
     city: "Cologne",
@@ -151,7 +151,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330270/spireflow/user5_htcbsc.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330270/nellavio/user5_htcbsc.png",
     firstName: "William",
     lastName: "Harris",
     city: "London",
@@ -161,7 +161,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/spireflow/user1_wgcdiv.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/nellavio/user1_wgcdiv.png",
     firstName: "Emily",
     lastName: "Baker",
     city: "Manchester",
@@ -171,7 +171,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/spireflow/user2_xmli04.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/nellavio/user2_xmli04.png",
     firstName: "Magnus",
     lastName: "Bakken",
     city: "Berlin",
@@ -181,7 +181,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330268/spireflow/user3_odzqfk.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330268/nellavio/user3_odzqfk.png",
     firstName: "Sofie",
     lastName: "Eriksen",
     city: "Frankfurt",
@@ -191,7 +191,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330269/spireflow/user4_e91vts.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330269/nellavio/user4_e91vts.png",
     firstName: "Grace",
     lastName: "Robinson",
     city: "Oxford",
@@ -201,7 +201,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330270/spireflow/user5_htcbsc.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330270/nellavio/user5_htcbsc.png",
     firstName: "Thomas",
     lastName: "Clark",
     city: "Liverpool",
@@ -211,7 +211,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/spireflow/user1_wgcdiv.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/nellavio/user1_wgcdiv.png",
     firstName: "Lucas",
     lastName: "Schmidt",
     city: "Denver",
@@ -221,7 +221,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/spireflow/user2_xmli04.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/nellavio/user2_xmli04.png",
     firstName: "Isabella",
     lastName: "Rossi",
     city: "Sydney",
@@ -231,7 +231,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330268/spireflow/user3_odzqfk.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330268/nellavio/user3_odzqfk.png",
     firstName: "Noah",
     lastName: "van Dijk",
     city: "Paris",
@@ -241,7 +241,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330269/spireflow/user4_e91vts.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330269/nellavio/user4_e91vts.png",
     firstName: "Sofia",
     lastName: "Andersson",
     city: "Oslo",
@@ -251,7 +251,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330270/spireflow/user5_htcbsc.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330270/nellavio/user5_htcbsc.png",
     firstName: "Liam",
     lastName: "Murphy",
     city: "Birmingham",
@@ -261,7 +261,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/spireflow/user1_wgcdiv.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/nellavio/user1_wgcdiv.png",
     firstName: "Emma",
     lastName: "Dubois",
     city: "Marseille",
@@ -271,7 +271,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/spireflow/user2_xmli04.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330266/nellavio/user2_xmli04.png",
     firstName: "Oliver",
     lastName: "Nielsen",
     city: "Trondheim",
@@ -281,7 +281,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330268/spireflow/user3_odzqfk.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330268/nellavio/user3_odzqfk.png",
     firstName: "Mia",
     lastName: "Kowalski",
     city: "Melbourne",
@@ -291,7 +291,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330269/spireflow/user4_e91vts.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330269/nellavio/user4_e91vts.png",
     firstName: "Ethan",
     lastName: "Garcia",
     city: "Phoenix",
@@ -301,7 +301,7 @@ export const customersData: Customer[] = [
   },
   {
     photo:
-      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330270/spireflow/user5_htcbsc.png",
+      "https://res.cloudinary.com/dvor7ybke/image/upload/v1702330270/nellavio/user5_htcbsc.png",
     firstName: "Ava",
     lastName: "Wilson",
     city: "Edinburgh",

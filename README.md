@@ -1,29 +1,29 @@
 <div id="user-content-toc" align="center">
   <ul align="center" style="list-style: none;">
     <summary>
-      <h1>Spireflow Backend</h1>
+      <h1>Nellavio Backend</h1>
     </summary>
   </ul>
 </div>
 
 <div align="center">
-  <a href="https://github.com/matt765/spireflow-backend/blob/master/CHANGELOG.md" style="text-decoration: none;">
+  <a href="https://github.com/matt765/nellavio-backend/blob/master/CHANGELOG.md" style="text-decoration: none;">
     <img src="https://img.shields.io/badge/%20-changelog-blue?logo=readme&logoColor=white&labelColor=grey" alt="Changelog" />
   </a>
-  <a href="https://github.com/matt765/spireflow-backend/blob/master/license" style="text-decoration: none;">
+  <a href="https://github.com/matt765/nellavio-backend/blob/master/license" style="text-decoration: none;">
     <img src="https://img.shields.io/badge/license-MIT-blue" alt="License" />
   </a>
-  <a href="https://github.com/matt765/spireflow-backend/releases" style="text-decoration: none;">
-    <img src="https://img.shields.io/github/package-json/v/matt765/spireflow-backend?color=green" alt="Version" />
+  <a href="https://github.com/matt765/nellavio-backend/releases" style="text-decoration: none;">
+    <img src="https://img.shields.io/github/package-json/v/matt765/nellavio-backend?color=green" alt="Version" />
   </a>
 </div>
 
-<h4 align="center">Open source Node.js backend for Spireflow dashboard</h4>
+<h4 align="center">Open source Node.js backend for Nellavio dashboard</h4>
 <br />
 
 ## Overview
 
-It provides data for [Spireflow](https://github.com/matt765/spireflow) — an open source dashboard starter built with Next.js & TypeScript. The GraphQL API serves 20+ queries covering homepage metrics, orders, customers, products, analytics and more, while the Better Auth enables production-ready authentication flow, handling session management and user credentials.
+It provides data for [Nellavio](https://github.com/matt765/nellavio) — an open source dashboard starter built with Next.js & TypeScript. The GraphQL API serves 20+ queries covering homepage metrics, orders, customers, products, analytics and more, while the Better Auth enables production-ready authentication flow, handling session management and user credentials.
 
 The frontend works independently by default — it loads mock data from `backendBackup.json` and keeps route protection disabled. Connecting this backend enables real database functionality, live data fetching on each request and a complete authentication system.
 
@@ -33,7 +33,7 @@ Node.js, Fastify, PostgreSQL, Prisma, GraphQL, Docker, Better Auth
 
 ## Endpoints
 
-- `/graphql` - GraphQL API with 25+ queries (products, orders, customers, analytics, etc.)
+- `/graphql` - GraphQL API with 20+ queries (products, orders, customers, analytics, etc.)
 - `/api/auth/*` - Better Auth endpoints (sign-in, sign-up, session management)
 - `/health` - Health check endpoint for monitoring
 
@@ -68,8 +68,8 @@ You can run this backend locally using commands below and access the data in Gra
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/spireflow/spireflow-backend.git
-cd spireflow-backend
+git clone https://github.com/nellavio/nellavio-backend.git
+cd nellavio-backend
 ```
 
 2. Install dependencies:
@@ -168,13 +168,13 @@ After deploying backend, you can update your front-end `.env` file. Follow front
 
 You can run this application in a containerized environment using these Docker commands
 
-| Command                                                      | Action                                      |
-| :----------------------------------------------------------- | :------------------------------------------ |
-| `docker build -t spireflow .`                                | Builds a Docker image from the Dockerfile   |
-| `docker run -p 4000:4000 -e DATABASE_URL="DB_URL" spireflow` | Runs the container with database connection |
+| Command                                                     | Action                                      |
+| :---------------------------------------------------------- | :------------------------------------------ |
+| `docker build -t nellavio .`                                | Builds a Docker image from the Dockerfile   |
+| `docker run -p 4000:4000 -e DATABASE_URL="DB_URL" nellavio` | Runs the container with database connection |
 
 ## Data viewer
 
 There is a simple data viewer available if you want to take a look at the data in a table form. Please note that although the authentication flow is designed to be production-ready, the rest of this backend serves as an optional data source that delivers sample data for dashboard views. As a result, there is no real business logic for the data layer, and most of the database schema is intentionally simplified.
 
-https://data-viewer.spireflow.app/
+https://data-viewer.nellavio.com/

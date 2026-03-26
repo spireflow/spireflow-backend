@@ -333,7 +333,7 @@ if (isDirectRun) {
 
   try {
     await fastify.listen({ port: PORT, host: HOST });
-    console.log("🚀 Spireflow Backend (Fastify) started");
+    console.log("🚀 Nellavio Backend (Fastify) started");
     console.log(`📊 GraphQL endpoint: http://localhost:${PORT}/graphql`);
     console.log(`🔐 Better Auth endpoint: http://localhost:${PORT}/api/auth/*`);
     console.log(`💚 Health check: http://localhost:${PORT}/health`);

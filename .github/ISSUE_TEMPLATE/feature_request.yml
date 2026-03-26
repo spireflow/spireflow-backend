@@ -5,7 +5,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for suggesting a feature. If your request is related to the frontend, please open it in the [main repository](https://github.com/matt765/spireflow/issues).
+        Thanks for suggesting a feature. If your request is related to the frontend, please open it in the [main repository](https://github.com/matt765/nellavio/issues).
 
   - type: textarea
     id: description
